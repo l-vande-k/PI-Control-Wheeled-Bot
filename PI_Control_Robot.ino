@@ -40,7 +40,7 @@ void setup() {
 void loop() {
   Error = Desired_Distance - analogRead(IR_Value); // this finds the error between the current output and desired output
   Integral_Error += Error; // this integrates the error over time
-  PWM_Val = 1500 + Error*Proportional_Gain; + Integral_Error*Integral_Gain; // This determines how long the signal is high.
+  PWM_Val = 1500 + Error*Proportional_Gain + Integral_Error*Integral_Gain; // This determines how long the signal is high.
 
   // the following conditional statements restrict the PWM signal to a minimum of 1000 and a maximum of 2000 microseconds 
   if(PWM_Val > 2000){
